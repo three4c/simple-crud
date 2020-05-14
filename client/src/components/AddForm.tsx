@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { State } from "../redux/reducers";
 import { AddFormActions } from "../redux/AddFormContainer";
 
@@ -7,9 +8,26 @@ type AddFormProps = State["form"] & AddFormActions;
 const AddForm: React.FC<AddFormProps> = (props) => {
   const { name, age } = props;
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    axios
+      .post("/api/characters", {
+        name,
+        age,
+      })
+      .then((response) => {
+        console.log(response);
+        props.initializeForm();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
-      <form>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <label>
           名前:
           <input
