@@ -8,7 +8,12 @@ export interface State {
   };
   characters: {
     isFetching: boolean;
-    characterArray: [];
+    characterArray: {
+      _id: string;
+      name: string;
+      age: number;
+      _v: number;
+    }[];
   };
 }
 
@@ -49,11 +54,12 @@ export const characterReducer = reducerWithInitialState(initialState.characters)
       isFetching: true,
     };
   })
-  .case(characterActions.receiveDataSuccess, (state) => {
+  .case(characterActions.receiveDataSuccess, (state, characterArray) => {
+    console.log(characterArray);
     return {
       ...state,
       isFetching: false,
-      characterArray: state.characterArray,
+      characterArray,
     };
   })
   .case(characterActions.receiveDataFailed, (state) => {
