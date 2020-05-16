@@ -20,7 +20,40 @@ const CharacterList: React.FC<CharacterListProps> = (props) => {
       });
   };
 
-  console.log(props.characterArray);
+  const handleUpdateCharacter = (id: string) => {
+    props.requestData();
+    axios
+      .put("/api/character", {
+        id,
+      })
+      .then((response) => {
+        const _characterArray = response.data;
+        props.receiveDataSuccess(_characterArray);
+      })
+      .catch((error) => {
+        console.error(new Error(error));
+        props.receiveDataFailed();
+      });
+  };
+
+  const handleDeleteCharacter = (id: string) => {
+    props.requestData();
+    axios({
+      method: "delete",
+      url: "/api/characters",
+      data: {
+        id,
+      },
+    })
+      .then((response) => {
+        const _characterArray = response.data;
+        props.receiveDataSuccess(_characterArray);
+      })
+      .catch((error) => {
+        console.error(new Error(error));
+        props.receiveDataFailed();
+      });
+  };
 
   return (
     <div>
@@ -33,6 +66,12 @@ const CharacterList: React.FC<CharacterListProps> = (props) => {
             {props.characterArray.map((character) => (
               <li key={character._id}>
                 {`${character.name} (${character.age})`}
+                <button onClick={() => handleUpdateCharacter(character._id)}>
+                  +1
+                </button>
+                <button onClick={() => handleDeleteCharacter(character._id)}>
+                  delete
+                </button>
               </li>
             ))}
           </ul>

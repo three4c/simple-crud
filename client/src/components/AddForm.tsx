@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { State } from "../redux/reducers";
 import { AddFormActions } from "../redux/AddFormContainer";
+import { characterActions } from "../redux/actions";
+import store from "../redux/store";
 
 type AddFormProps = State["form"] & AddFormActions;
 
@@ -17,11 +19,13 @@ const AddForm: React.FC<AddFormProps> = (props) => {
         age,
       })
       .then((response) => {
-        console.log(response);
         props.initializeForm();
+        const _characterArray = response.data;
+        store.dispatch(characterActions.receiveDataSuccess(_characterArray));
       })
       .catch((error) => {
-        console.log(error);
+        console.log(new Error(error));
+        store.dispatch(characterActions.receiveDataFailed());
       });
   };
 

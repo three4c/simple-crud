@@ -44,6 +44,8 @@ export const formReducer = reducerWithInitialState(initialState.form)
   .case(formActions.initializeForm, (state) => {
     return {
       ...state,
+      name: "",
+      age: "",
     };
   });
 

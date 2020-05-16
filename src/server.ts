@@ -39,11 +39,49 @@ mongoose.connect(
         age,
       }).save((error) => {
         if (error) {
-          response.status(500);
+          response.status(500).send();
         } else {
-          response
-            .status(200)
-            .send(`${name}(${age}) was successfully created.`);
+          Character.find({}, (findError, characterArray) => {
+            if (findError) {
+              response.status(500).send();
+            } else {
+              response.status(200).send(characterArray);
+            }
+          });
+        }
+      });
+    });
+
+    app.put("/api/characters", (request, response) => {
+      const { id } = request.body;
+      Character.findByIdAndUpdate(id, { $inc: { age: 1 } }, (error) => {
+        if (error) {
+          response.status(500).send();
+        } else {
+          Character.find({}, (findError, characterArray) => {
+            if (findError) {
+              response.status(500).send();
+            } else {
+              response.status(200).send(characterArray);
+            }
+          });
+        }
+      });
+    });
+
+    app.delete("/api/characters", (request, response) => {
+      const { id } = request.body;
+      Character.findByIdAndRemove(id, (error) => {
+        if (error) {
+          response.status(500).send();
+        } else {
+          Character.find({}, (findError, characterArray) => {
+            if (findError) {
+              response.status(500).send();
+            } else {
+              response.status(200).send(characterArray);
+            }
+          });
         }
       });
     });
