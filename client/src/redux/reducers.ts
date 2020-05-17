@@ -57,7 +57,6 @@ export const characterReducer = reducerWithInitialState(initialState.characters)
     };
   })
   .case(characterActions.receiveDataSuccess, (state, characterArray) => {
-    console.log(characterArray);
     return {
       ...state,
       isFetching: false,
