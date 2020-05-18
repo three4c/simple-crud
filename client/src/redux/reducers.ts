@@ -47,6 +47,21 @@ export const formReducer = reducerWithInitialState(initialState.form)
       name: "",
       age: "",
     };
+  })
+  .case(formActions.postForm.started, (state) => {
+    return {
+      ...state,
+    };
+  })
+  .case(formActions.postForm.done, (state) => {
+    return {
+      ...state,
+    };
+  })
+  .case(formActions.postForm.failed, (state) => {
+    return {
+      ...state,
+    };
   });
 
 export const characterReducer = reducerWithInitialState(initialState.characters)
@@ -72,19 +87,32 @@ export const characterReducer = reducerWithInitialState(initialState.characters)
   .case(characterActions.updateCharacters.started, (state) => {
     return {
       ...state,
-      isFetching: true,
     };
   })
   .case(characterActions.updateCharacters.done, (state, payload: any) => {
     return {
       ...state,
-      isFetching: false,
       characterArray: payload.result,
     };
   })
   .case(characterActions.updateCharacters.failed, (state) => {
     return {
       ...state,
-      isFetching: false,
+    };
+  })
+  .case(characterActions.deleteCharacters.started, (state) => {
+    return {
+      ...state,
+    };
+  })
+  .case(characterActions.updateCharacters.done, (state, payload: any) => {
+    return {
+      ...state,
+      characterArray: payload.result,
+    };
+  })
+  .case(characterActions.deleteCharacters.failed, (state) => {
+    return {
+      ...state,
     };
   });

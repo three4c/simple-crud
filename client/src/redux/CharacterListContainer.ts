@@ -8,6 +8,7 @@ import CharacterList from "../components/CharacterList";
 export interface CharacterListActions {
   getCharacters: () => Action<{}>;
   updateCharacters: (id: string) => Action<{}>;
+  deleteCharacters: (id: string) => Action<{}>;
 }
 
 const mapStateToProps = (appState: AppState) => {
@@ -22,6 +23,8 @@ const mapDispatchToProps = (dispatch: Dispatch<Action<{}>>) => {
       dispatch(characterActions.getCharacters.started({ params: {} })),
     updateCharacters: (id: string) =>
       dispatch(characterActions.updateCharacters.started({ params: {}, id })),
+    deleteCharacters: (id: string) =>
+      dispatch(characterActions.deleteCharacters.started({ params: {}, id })),
   };
 };
 

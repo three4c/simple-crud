@@ -34,6 +34,10 @@ mongoose.connect(
     app.post("/api/characters", (request, response) => {
       const { name, age } = request.body;
 
+      if (!name && !age) {
+        return;
+      }
+
       new Character({
         name,
         age,
