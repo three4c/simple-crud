@@ -39,12 +39,6 @@ function* runDeleteCharacters(action: {
         result: characterArray,
       })
     );
-    yield put(
-      characterActions.getCharacters.done({
-        params: {},
-        result: characterArray,
-      })
-    );
   } else {
     yield put(
       characterActions.deleteCharacters.failed({ params: {}, error: error })

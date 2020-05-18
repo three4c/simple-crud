@@ -105,7 +105,7 @@ export const characterReducer = reducerWithInitialState(initialState.characters)
       ...state,
     };
   })
-  .case(characterActions.updateCharacters.done, (state, payload: any) => {
+  .case(characterActions.deleteCharacters.done, (state, payload: any) => {
     return {
       ...state,
       characterArray: payload.result,
