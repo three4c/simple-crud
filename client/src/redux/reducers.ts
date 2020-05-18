@@ -50,20 +50,39 @@ export const formReducer = reducerWithInitialState(initialState.form)
   });
 
 export const characterReducer = reducerWithInitialState(initialState.characters)
-  .case(characterActions.requestData, (state) => {
+  .case(characterActions.getCharacters.started, (state) => {
     return {
       ...state,
       isFetching: true,
     };
   })
-  .case(characterActions.receiveDataSuccess, (state, characterArray) => {
+  .case(characterActions.getCharacters.done, (state, payload: any) => {
     return {
       ...state,
       isFetching: false,
-      characterArray,
+      characterArray: payload.result,
     };
   })
-  .case(characterActions.receiveDataFailed, (state) => {
+  .case(characterActions.getCharacters.failed, (state) => {
+    return {
+      ...state,
+      isFetching: false,
+    };
+  })
+  .case(characterActions.updateCharacters.started, (state) => {
+    return {
+      ...state,
+      isFetching: true,
+    };
+  })
+  .case(characterActions.updateCharacters.done, (state, payload: any) => {
+    return {
+      ...state,
+      isFetching: false,
+      characterArray: payload.result,
+    };
+  })
+  .case(characterActions.updateCharacters.failed, (state) => {
     return {
       ...state,
       isFetching: false,

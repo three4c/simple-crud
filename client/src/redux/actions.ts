@@ -1,6 +1,6 @@
 import actionCreatorFactory from "typescript-fsa";
 
-const actionCreator = actionCreatorFactory();
+export const actionCreator = actionCreatorFactory();
 
 export const formActions = {
   changeName: actionCreator<string>("CHANGE_NAME"),
@@ -9,7 +9,6 @@ export const formActions = {
 };
 
 export const characterActions = {
-  requestData: actionCreator<void>("REQUEST_DATA"),
-  receiveDataSuccess: actionCreator<[]>("RECEIVE_DATA_SUCCESS"),
-  receiveDataFailed: actionCreator<void>("RECEIVE_DATA_FAILED"),
+  getCharacters: actionCreator.async<{}, {}, {}>("GET_CHARACTERS"),
+  updateCharacters: actionCreator.async<{}, {}, {}>("UPDATE_CHARACTERS"),
 };

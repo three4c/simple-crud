@@ -13,20 +13,20 @@ const AddForm: React.FC<AddFormProps> = (props) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    axios
-      .post("/api/characters", {
-        name,
-        age,
-      })
-      .then((response) => {
-        props.initializeForm();
-        const _characterArray = response.data;
-        store.dispatch(characterActions.receiveDataSuccess(_characterArray));
-      })
-      .catch((error) => {
-        console.log(new Error(error));
-        store.dispatch(characterActions.receiveDataFailed());
-      });
+    // axios
+    //   .post("/api/characters", {
+    //     name,
+    //     age,
+    //   })
+    //   .then((response) => {
+    //     props.initializeForm();
+    //     const _characterArray = response.data;
+    //     store.dispatch(characterActions.receiveDataSuccess(_characterArray));
+    //   })
+    //   .catch((error) => {
+    //     console.log(new Error(error));
+    //     store.dispatch(characterActions.receiveDataFailed());
+    //   });
   };
 
   return (

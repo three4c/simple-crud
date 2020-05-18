@@ -6,9 +6,8 @@ import { characterActions } from "./actions";
 import CharacterList from "../components/CharacterList";
 
 export interface CharacterListActions {
-  requestData: () => Action<void>;
-  receiveDataSuccess: (inputValue: []) => Action<[]>;
-  receiveDataFailed: () => Action<void>;
+  getCharacters: () => Action<{}>;
+  updateCharacters: (id: string) => Action<{}>;
 }
 
 const mapStateToProps = (appState: AppState) => {
@@ -17,12 +16,12 @@ const mapStateToProps = (appState: AppState) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<Action<[] | void>>) => {
+const mapDispatchToProps = (dispatch: Dispatch<Action<{}>>) => {
   return {
-    requestData: () => dispatch(characterActions.requestData()),
-    receiveDataSuccess: (inputValue: []) =>
-      dispatch(characterActions.receiveDataSuccess(inputValue)),
-    receiveDataFailed: () => dispatch(characterActions.receiveDataFailed()),
+    getCharacters: () =>
+      dispatch(characterActions.getCharacters.started({ params: {} })),
+    updateCharacters: (id: string) =>
+      dispatch(characterActions.updateCharacters.started({ params: {}, id })),
   };
 };
 
