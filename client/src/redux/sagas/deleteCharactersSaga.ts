@@ -46,9 +46,6 @@ function* runDeleteCharacters(action: {
   }
 }
 
-export function* watchDeleteCharacters() {
-  yield takeLatest(
-    characterActions.deleteCharacters.started,
-    runDeleteCharacters
-  );
-}
+export const watchDeleteCharacters = [
+  takeLatest(characterActions.deleteCharacters.started, runDeleteCharacters),
+];

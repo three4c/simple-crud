@@ -10,7 +10,7 @@ export const formActions = {
 };
 
 export const characterActions = {
-  getCharacters: actionCreator.async<{}, {}, {}>("GET_CHARACTERS"),
-  updateCharacters: actionCreator.async<{}, {}, {}>("UPDATE_CHARACTERS"),
-  deleteCharacters: actionCreator.async<{}, {}, {}>("DELETE_CHARACTERS"),
+  getCharacters: actionCreator.async<any, any>("GET_CHARACTERS"),
+  updateCharacters: actionCreator.async<any, any>("UPDATE_CHARACTERS"),
+  deleteCharacters: actionCreator.async<any, any>("DELETE_CHARACTERS"),
 };

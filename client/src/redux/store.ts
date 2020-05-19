@@ -1,5 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import { formReducer, characterReducer, State } from "./reducers";
+import { formReducer, FormState } from "./reducers/formReducer";
+import {
+  characterReducer,
+  CharactersState,
+} from "./reducers/charactersReducer";
 import { createLogger } from "redux-logger";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./sagas";
@@ -7,8 +11,8 @@ import rootSaga from "./sagas";
 const sagaMiddleware = createSagaMiddleware();
 
 export type AppState = {
-  form: State["form"];
-  character: State["characters"];
+  form: FormState;
+  character: CharactersState;
 };
 
 const logger = createLogger({

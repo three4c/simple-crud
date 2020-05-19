@@ -1,9 +1,9 @@
 import { Action } from "typescript-fsa";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
-import { AppState } from "./store";
-import { characterActions } from "./actions";
-import CharacterList from "../components/CharacterList";
+import { AppState } from "../store";
+import { characterActions } from "../actions";
+import CharacterList from "../../components/CharacterList";
 
 export interface CharacterListActions {
   getCharacters: () => Action<{}>;

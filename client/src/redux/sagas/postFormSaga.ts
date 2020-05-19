@@ -57,6 +57,6 @@ function* runPostForm(action: {
   }
 }
 
-export function* watchPostForm() {
-  yield takeLatest(formActions.postForm.started, runPostForm);
-}
+export const watchPostForm = [
+  takeLatest(formActions.postForm.started, runPostForm),
+];

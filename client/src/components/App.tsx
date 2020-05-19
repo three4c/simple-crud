@@ -1,6 +1,6 @@
 import React from "react";
-import AddForm from "../redux/AddFormContainer";
-import CharacterList from "../redux/CharacterListContainer";
+import AddForm from "../redux/container/AddFormContainer";
+import CharacterList from "../redux/container/CharacterListContainer";
 
 const App: React.FC = () => {
   return (

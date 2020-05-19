@@ -1,8 +1,8 @@
 import React from "react";
-import { State } from "../redux/reducers";
-import { AddFormActions } from "../redux/AddFormContainer";
+import { FormState } from "../redux/reducers/formReducer";
+import { AddFormActions } from "../redux/container/AddFormContainer";
 
-type AddFormProps = State["form"] & AddFormActions;
+type AddFormProps = FormState & AddFormActions;
 
 const AddForm: React.FC<AddFormProps> = (props) => {
   const { name, age } = props;

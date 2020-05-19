@@ -1,8 +1,8 @@
 import React from "react";
-import { State } from "../redux/reducers";
-import { CharacterListActions } from "../redux/CharacterListContainer";
+import { CharactersState } from "../redux/reducers/charactersReducer";
+import { CharacterListActions } from "../redux/container/CharacterListContainer";
 
-type CharacterListProps = State["characters"] & CharacterListActions;
+type CharacterListProps = CharactersState & CharacterListActions;
 
 const CharacterList: React.FC<CharacterListProps> = (props) => {
   return (

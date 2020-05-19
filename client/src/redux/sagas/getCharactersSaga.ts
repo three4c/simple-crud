@@ -32,6 +32,6 @@ function* runGetCharacters() {
   }
 }
 
-export function* watchGetCharacters() {
-  yield takeLatest(characterActions.getCharacters.started, runGetCharacters);
-}
+export const watchGetCharacters = [
+  takeLatest(characterActions.getCharacters.started, runGetCharacters),
+];

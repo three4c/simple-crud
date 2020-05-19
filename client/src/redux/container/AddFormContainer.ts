@@ -1,9 +1,9 @@
 import { Action } from "typescript-fsa";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
-import { AppState } from "./store";
-import { formActions } from "./actions";
-import AddForm from "../components/AddForm";
+import { AppState } from "../store";
+import { formActions } from "../actions";
+import AddForm from "../../components/AddForm";
 
 export interface AddFormActions {
   changeName: (inputValue: string) => Action<string>;

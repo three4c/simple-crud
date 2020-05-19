@@ -40,9 +40,6 @@ function* runUpdateCharacters(action: {
   }
 }
 
-export function* watchUpdateCharacters() {
-  yield takeLatest(
-    characterActions.updateCharacters.started,
-    runUpdateCharacters
-  );
-}
+export const watchUpdateCharacters = [
+  takeLatest(characterActions.updateCharacters.started, runUpdateCharacters),
+];
