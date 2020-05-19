@@ -1,12 +1,13 @@
-import express, { request } from "express";
+import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import Character from "./character";
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 const dbUrl = "mongodb://localhost/crud";
 
+app.use(express.static("client/build"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -21,7 +22,7 @@ mongoose.connect(
       console.log("db connected");
     }
 
-    app.get("/api/characters", (request, response) => {
+    app.get("/api/characters", (_, response) => {
       Character.find({}, (error, characterArray) => {
         if (error) {
           response.status(500).send();
@@ -90,12 +91,8 @@ mongoose.connect(
       });
     });
 
-    app.listen(port, (error) => {
-      if (error) {
-        throw new Error(error);
-      } else {
-        console.log(`listening on port ${port}`);
-      }
+    app.listen(port, () => {
+      console.log(`listening on port ${port}`);
     });
   }
 );
