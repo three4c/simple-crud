@@ -17,7 +17,7 @@ const CharacterList: React.FC<CharacterListProps> = (props) => {
         <h2>Now Loading...</h2>
       ) : (
         <div>
-          <h2 className="CharacterList__title">DBに登録されたリスト</h2>
+          <h2 className="CharacterList__title">リスト</h2>
           <ul className="CharacterList__list">
             {props.characterArray.map((character) => (
               <li key={character._id} className="CharacterList__listItem">
