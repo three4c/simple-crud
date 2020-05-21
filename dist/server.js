@@ -51,9 +51,9 @@ mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true }, (db
         });
     });
     app.put("/api/characters", (request, response) => {
-        const { id } = request.body;
+        const { id, name, age } = request.body;
         /** $setでキーを選択してアップデートする */
-        Character.findByIdAndUpdate(id, { $set: { age: 1 } }, (error) => {
+        Character.findByIdAndUpdate(id, { $set: { name: name, age: age } }, (error) => {
             if (error) {
                 response.status(500).send();
             }

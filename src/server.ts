@@ -58,21 +58,25 @@ mongoose.connect(
     });
 
     app.put("/api/characters", (request, response) => {
-      const { id } = request.body;
+      const { id, name, age } = request.body;
       /** $setでキーを選択してアップデートする */
-      Character.findByIdAndUpdate(id, { $set: { age: 1 } }, (error) => {
-        if (error) {
-          response.status(500).send();
-        } else {
-          Character.find({}, (findError, characterArray) => {
-            if (findError) {
-              response.status(500).send();
-            } else {
-              response.status(200).send(characterArray);
-            }
-          });
+      Character.findByIdAndUpdate(
+        id,
+        { $set: { name: name, age: age } },
+        (error) => {
+          if (error) {
+            response.status(500).send();
+          } else {
+            Character.find({}, (findError, characterArray) => {
+              if (findError) {
+                response.status(500).send();
+              } else {
+                response.status(200).send(characterArray);
+              }
+            });
+          }
         }
-      });
+      );
     });
 
     app.delete("/api/characters", (request, response) => {

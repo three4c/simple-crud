@@ -2,6 +2,8 @@ import { reducerWithInitialState } from "typescript-fsa-reducers";
 import { characterActions } from "../actions";
 
 export interface CharactersState {
+  name: string;
+  age: string;
   isFetching: boolean;
   characterArray: {
     _id: string;
@@ -12,11 +14,25 @@ export interface CharactersState {
 }
 
 const initialState: CharactersState = {
+  name: "",
+  age: "",
   isFetching: false,
   characterArray: [],
 };
 
 export const characterReducer = reducerWithInitialState(initialState)
+  .case(characterActions.editName, (state, name) => {
+    return {
+      ...state,
+      name,
+    };
+  })
+  .case(characterActions.editAge, (state, age) => {
+    return {
+      ...state,
+      age,
+    };
+  })
   .case(characterActions.getCharacters.started, (state) => {
     return {
       ...state,

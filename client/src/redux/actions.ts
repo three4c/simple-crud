@@ -10,6 +10,8 @@ export const formActions = {
 };
 
 export const characterActions = {
+  editName: actionCreator<string>("EDIT_NAME"),
+  editAge: actionCreator<string>("EDIT_AGE"),
   getCharacters: actionCreator.async<any, any>("GET_CHARACTERS"),
   updateCharacters: actionCreator.async<any, any>("UPDATE_CHARACTERS"),
   deleteCharacters: actionCreator.async<any, any>("DELETE_CHARACTERS"),

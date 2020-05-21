@@ -3,14 +3,16 @@ import axios from "axios";
 
 import { characterActions } from "../actions";
 
-const updateCharacters = (id: string) => {
+const updateCharacters = (id: string, name: string, age: number) => {
   return axios
     .put("/api/characters", {
       id,
+      name,
+      age,
     })
     .then((response) => {
       const characterArray = response.data;
-      return { characterArray, id };
+      return { characterArray, id, name, age };
     })
     .catch((error) => {
       return { error };
@@ -19,14 +21,18 @@ const updateCharacters = (id: string) => {
 
 function* runUpdateCharacters(action: {
   type: string;
-  payload: { id: string };
+  payload: { id: string; name: string; age: number };
 }) {
-  const { characterArray, id, error } = yield call(
+  const { characterArray, id, name, age, error } = yield call(
     updateCharacters,
-    action.payload.id
+    action.payload.id,
+    action.payload.name,
+    action.payload.age
   );
 
-  if (characterArray && id) {
+  console.log(id, name, age);
+
+  if (characterArray && id && name && age) {
     yield put(
       characterActions.updateCharacters.done({
         params: {},
