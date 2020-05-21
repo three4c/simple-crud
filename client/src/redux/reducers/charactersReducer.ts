@@ -8,7 +8,7 @@ export interface CharactersState {
   characterArray: {
     _id: string;
     name: string;
-    age: number;
+    age: string;
     _v: number;
   }[];
 }
