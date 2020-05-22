@@ -37,10 +37,12 @@ const CharacterList: React.FC<CharacterListProps> = (props) => {
                 {edit[index] ? (
                   <React.Fragment>
                     <input
+                      className="CharacterList__edit"
                       defaultValue={character.name}
                       onChange={(e) => props.editName(e.target.value)}
                     />
                     <input
+                      className="CharacterList__edit"
                       defaultValue={character.age}
                       onChange={(e) => props.editAge(e.target.value)}
                     />
