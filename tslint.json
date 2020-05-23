@@ -1,6 +1,9 @@
 {
-  //   "extends": "tslint-config-airbnb",
-  //   "rules": {
-  //     "ter-indent": [true, 2]
-  //   }
+  "extends": "tslint-config-airbnb",
+  "rules": {
+    "ter-indent": [true, 2]
+  },
+  "linterOptions": {
+    "exclude": ["./client/src/**/*"]
+  }
 }

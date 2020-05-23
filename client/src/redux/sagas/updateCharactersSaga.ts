@@ -1,11 +1,11 @@
-import { call, put, takeLatest } from "redux-saga/effects";
-import axios from "axios";
+import { call, put, takeLatest } from 'redux-saga/effects';
+import axios from 'axios';
 
-import { characterActions } from "../actions";
+import { characterActions } from '../actions';
 
 const updateCharacters = (id: string, name: string, age: number) => {
   return axios
-    .put("/api/characters", {
+    .put('/api/characters', {
       id,
       name,
       age,
@@ -27,7 +27,7 @@ function* runUpdateCharacters(action: {
     updateCharacters,
     action.payload.id,
     action.payload.name,
-    action.payload.age
+    action.payload.age,
   );
 
   console.log(id, name, age);
@@ -37,11 +37,11 @@ function* runUpdateCharacters(action: {
       characterActions.updateCharacters.done({
         params: {},
         result: characterArray,
-      })
+      }),
     );
   } else {
     yield put(
-      characterActions.updateCharacters.failed({ params: {}, error: error })
+      characterActions.updateCharacters.failed({ params: {}, error: error }),
     );
   }
 }

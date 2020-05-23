@@ -1,9 +1,9 @@
-import { Action } from "typescript-fsa";
-import { Dispatch } from "redux";
-import { connect } from "react-redux";
-import { AppState } from "../store";
-import { formActions } from "../actions";
-import AddForm from "../../components/AddForm";
+import { Action } from 'typescript-fsa';
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import { AppState } from '../store';
+import { formActions } from '../actions';
+import AddForm from '../../components/AddForm';
 
 export interface AddFormActions {
   changeName: (inputValue: string) => Action<string>;
@@ -12,7 +12,7 @@ export interface AddFormActions {
   postForm: (
     e: React.FormEvent<HTMLFormElement>,
     name: string,
-    age: string
+    age: string,
   ) => Action<{}>;
 }
 
@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch: Dispatch<Action<string | void | {}>>) => {
     postForm: (
       e: React.FormEvent<HTMLFormElement>,
       name: string,
-      age: string
+      age: string,
     ) => dispatch(formActions.postForm.started({ params: {}, e, name, age })),
   };
 };

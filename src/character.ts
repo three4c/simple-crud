@@ -1,12 +1,12 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 mongoose.Promise = global.Promise;
 
-const CharacterSchema = new mongoose.Schema({
+const characterSchema = new mongoose.Schema({
   name: String,
   age: Number,
 });
 
-const Character = mongoose.model("Character", CharacterSchema);
+const character = mongoose.model('Character', characterSchema);
 
-export default Character;
+export default character;

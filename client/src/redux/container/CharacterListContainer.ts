@@ -1,9 +1,9 @@
-import { Action } from "typescript-fsa";
-import { Dispatch } from "redux";
-import { connect } from "react-redux";
-import { AppState } from "../store";
-import { characterActions } from "../actions";
-import CharacterList from "../../components/CharacterList";
+import { Action } from 'typescript-fsa';
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import { AppState } from '../store';
+import { characterActions } from '../actions';
+import CharacterList from '../../components/CharacterList';
 
 export interface CharacterListActions {
   editName: (name: string) => Action<string>;
@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch: Dispatch<Action<{}>>) => {
           id,
           name,
           age,
-        })
+        }),
       ),
     deleteCharacters: (id: string) =>
       dispatch(characterActions.deleteCharacters.started({ params: {}, id })),

@@ -1,16 +1,16 @@
-import { call, put, takeLatest } from "redux-saga/effects";
-import axios from "axios";
+import { call, put, takeLatest } from 'redux-saga/effects';
+import axios from 'axios';
 
-import { characterActions, formActions } from "../actions";
+import { characterActions, formActions } from '../actions';
 
 const postForm = (
   e: React.FormEvent<HTMLFormElement>,
   name: string,
-  age: string
+  age: string,
 ) => {
   e.preventDefault();
   return axios
-    .post("/api/characters", {
+    .post('/api/characters', {
       name,
       age,
     })
@@ -35,7 +35,7 @@ function* runPostForm(action: {
     postForm,
     action.payload.e,
     action.payload.name,
-    action.payload.age
+    action.payload.age,
   );
 
   if (characterArray && e && name && age) {
@@ -43,13 +43,13 @@ function* runPostForm(action: {
       formActions.postForm.done({
         params: {},
         result: characterArray,
-      })
+      }),
     );
     yield put(
       characterActions.getCharacters.done({
         params: {},
         result: characterArray,
-      })
+      }),
     );
     yield put(formActions.initializeForm());
   } else {

@@ -1,12 +1,12 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import { formReducer, FormState } from "./reducers/formReducer";
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { formReducer, FormState } from './reducers/formReducer';
 import {
   characterReducer,
   CharactersState,
-} from "./reducers/charactersReducer";
-import { createLogger } from "redux-logger";
-import createSagaMiddleware from "redux-saga";
-import rootSaga from "./sagas";
+} from './reducers/charactersReducer';
+import { createLogger } from 'redux-logger';
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -26,7 +26,7 @@ const store = createStore(
     character: characterReducer,
   }),
   {},
-  applyMiddleware(sagaMiddleware, logger)
+  applyMiddleware(sagaMiddleware, logger),
 );
 
 sagaMiddleware.run(rootSaga);

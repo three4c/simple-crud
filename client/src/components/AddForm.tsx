@@ -1,8 +1,8 @@
-import React from "react";
-import { FormState } from "../redux/reducers/formReducer";
-import { AddFormActions } from "../redux/container/AddFormContainer";
+import React from 'react';
+import { FormState } from '../redux/reducers/formReducer';
+import { AddFormActions } from '../redux/container/AddFormContainer';
 
-import "./AddForm.scss";
+import './AddForm.scss';
 
 type AddFormProps = FormState & AddFormActions;
 

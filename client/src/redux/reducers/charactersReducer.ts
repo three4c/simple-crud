@@ -1,5 +1,5 @@
-import { reducerWithInitialState } from "typescript-fsa-reducers";
-import { characterActions } from "../actions";
+import { reducerWithInitialState } from 'typescript-fsa-reducers';
+import { characterActions } from '../actions';
 
 export interface CharactersState {
   name: string;
@@ -14,8 +14,8 @@ export interface CharactersState {
 }
 
 const initialState: CharactersState = {
-  name: "",
-  age: "",
+  name: '',
+  age: '',
   isFetching: false,
   characterArray: [],
 };

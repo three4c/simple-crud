@@ -1,11 +1,11 @@
-import { call, put, takeLatest } from "redux-saga/effects";
-import axios from "axios";
+import { call, put, takeLatest } from 'redux-saga/effects';
+import axios from 'axios';
 
-import { characterActions } from "../actions";
+import { characterActions } from '../actions';
 
 const getCharacters = () => {
   return axios
-    .get("/api/characters")
+    .get('/api/characters')
     .then((response) => {
       const characterArray = response.data;
       return { characterArray };
@@ -23,11 +23,11 @@ function* runGetCharacters() {
       characterActions.getCharacters.done({
         params: {},
         result: characterArray,
-      })
+      }),
     );
   } else {
     yield put(
-      characterActions.getCharacters.failed({ params: {}, error: error })
+      characterActions.getCharacters.failed({ params: {}, error: error }),
     );
   }
 }

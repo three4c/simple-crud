@@ -1,14 +1,14 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { CharactersState } from "../redux/reducers/charactersReducer";
-import { CharacterListActions } from "../redux/container/CharacterListContainer";
+import React, { useCallback, useEffect, useState } from 'react';
+import { CharactersState } from '../redux/reducers/charactersReducer';
+import { CharacterListActions } from '../redux/container/CharacterListContainer';
 
-import "./CharacterList.scss";
+import './CharacterList.scss';
 
 type CharacterListProps = CharactersState & CharacterListActions;
 
 const CharacterList: React.FC<CharacterListProps> = (props) => {
   const [edit, setEdit] = useState(
-    new Array<boolean>(props.characterArray.length).fill(false)
+    new Array<boolean>(props.characterArray.length).fill(false),
   );
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const CharacterList: React.FC<CharacterListProps> = (props) => {
       newArray[index] = !newArray[index];
       setEdit(newArray);
     },
-    [edit]
+    [edit],
   );
 
   return (
@@ -57,7 +57,7 @@ const CharacterList: React.FC<CharacterListProps> = (props) => {
                       props.updateCharacters(
                         character._id,
                         props.name ? props.name : character.name,
-                        props.age ? props.age : character.age
+                        props.age ? props.age : character.age,
                       );
                       editHandler(index);
                     }}

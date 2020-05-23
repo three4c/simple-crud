@@ -1,12 +1,12 @@
-import { call, put, takeLatest } from "redux-saga/effects";
-import axios from "axios";
+import { call, put, takeLatest } from 'redux-saga/effects';
+import axios from 'axios';
 
-import { characterActions } from "../actions";
+import { characterActions } from '../actions';
 
 const deleteCharacters = (id: string) => {
   return axios({
-    method: "delete",
-    url: "/api/characters",
+    method: 'delete',
+    url: '/api/characters',
     data: {
       id,
     },
@@ -29,7 +29,7 @@ function* runDeleteCharacters(action: {
 }) {
   const { characterArray, id, error } = yield call(
     deleteCharacters,
-    action.payload.id
+    action.payload.id,
   );
 
   if (characterArray && id) {
@@ -37,11 +37,11 @@ function* runDeleteCharacters(action: {
       characterActions.deleteCharacters.done({
         params: {},
         result: characterArray,
-      })
+      }),
     );
   } else {
     yield put(
-      characterActions.deleteCharacters.failed({ params: {}, error: error })
+      characterActions.deleteCharacters.failed({ params: {}, error: error }),
     );
   }
 }

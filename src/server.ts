@@ -1,13 +1,13 @@
-import express from "express";
-import bodyParser from "body-parser";
-import mongoose from "mongoose";
-import Character from "./character";
+import character from './character';
+import express from 'express';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
 
 const app = express();
 const port = process.env.PORT || 3001;
-const dbUrl = "mongodb://localhost/crud";
+const dbUrl = 'mongodb://localhost/crud';
 
-app.use(express.static("client/build"));
+app.use(express.static('client/build'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -19,11 +19,11 @@ mongoose.connect(
       console.log(dbError);
       throw new Error(`${dbError}`);
     } else {
-      console.log("db connected");
+      console.log('db connected');
     }
 
-    app.get("/api/characters", (_, response) => {
-      Character.find({}, (error, characterArray) => {
+    app.get('/api/characters', (_, response) => {
+      character.find({}, (error, characterArray) => {
         if (error) {
           response.status(500).send();
         } else {
@@ -32,21 +32,21 @@ mongoose.connect(
       });
     });
 
-    app.post("/api/characters", (request, response) => {
+    app.post('/api/characters', (request, response) => {
       const { name, age } = request.body;
 
       if (!name && !age) {
         return;
       }
 
-      new Character({
+      new character({
         name,
         age,
       }).save((error) => {
         if (error) {
           response.status(500).send();
         } else {
-          Character.find({}, (findError, characterArray) => {
+          character.find({}, (findError, characterArray) => {
             if (findError) {
               response.status(500).send();
             } else {
@@ -57,35 +57,31 @@ mongoose.connect(
       });
     });
 
-    app.put("/api/characters", (request, response) => {
+    app.put('/api/characters', (request, response) => {
       const { id, name, age } = request.body;
       /** $setでキーを選択してアップデートする */
-      Character.findByIdAndUpdate(
-        id,
-        { $set: { name: name, age: age } },
-        (error) => {
-          if (error) {
-            response.status(500).send();
-          } else {
-            Character.find({}, (findError, characterArray) => {
-              if (findError) {
-                response.status(500).send();
-              } else {
-                response.status(200).send(characterArray);
-              }
-            });
-          }
-        }
-      );
-    });
-
-    app.delete("/api/characters", (request, response) => {
-      const { id } = request.body;
-      Character.findByIdAndRemove(id, (error) => {
+      character.findByIdAndUpdate(id, { $set: { name, age } }, (error) => {
         if (error) {
           response.status(500).send();
         } else {
-          Character.find({}, (findError, characterArray) => {
+          character.find({}, (findError, characterArray) => {
+            if (findError) {
+              response.status(500).send();
+            } else {
+              response.status(200).send(characterArray);
+            }
+          });
+        }
+      });
+    });
+
+    app.delete('/api/characters', (request, response) => {
+      const { id } = request.body;
+      character.findByIdAndRemove(id, (error) => {
+        if (error) {
+          response.status(500).send();
+        } else {
+          character.find({}, (findError, characterArray) => {
             if (findError) {
               response.status(500).send();
             } else {
@@ -99,5 +95,5 @@ mongoose.connect(
     app.listen(port, () => {
       console.log(`listening on port ${port}`);
     });
-  }
+  },
 );

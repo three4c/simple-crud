@@ -1,5 +1,5 @@
-import { reducerWithInitialState } from "typescript-fsa-reducers";
-import { formActions } from "../actions";
+import { reducerWithInitialState } from 'typescript-fsa-reducers';
+import { formActions } from '../actions';
 
 export interface FormState {
   name: string;
@@ -7,8 +7,8 @@ export interface FormState {
 }
 
 const initialState: FormState = {
-  name: "",
-  age: "",
+  name: '',
+  age: '',
 };
 
 export const formReducer = reducerWithInitialState(initialState)
@@ -27,8 +27,8 @@ export const formReducer = reducerWithInitialState(initialState)
   .case(formActions.initializeForm, (state) => {
     return {
       ...state,
-      name: "",
-      age: "",
+      name: '',
+      age: '',
     };
   })
   .case(formActions.postForm.started, (state) => {
