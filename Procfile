@@ -1,1 +1,1 @@
-web: yarn build:prod && node ./dist/server.js
+web: npm start
