@@ -2,6 +2,9 @@
   "name": "simple-crud",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "yarn": "1.x"
+  },
   "main": "dist/server.js",
   "scripts": {
     "start:dev": "yarn watch:dev & nodemon dist/server.js & yarn watch:react",

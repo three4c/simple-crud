@@ -1,1 +1,1 @@
-web: node ./dist/server.js
+web: yarn build:prod && node ./dist/server.js
