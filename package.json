@@ -14,7 +14,7 @@
     "build:react": "cd client && yarn build",
     "watch:dev": "webpack -w --mode development",
     "watch:react": "cd client && yarn start",
-    "heroku-postbuild": "yarn build:prod && yarn start:prod"
+    "heroku-postbuild": "webpack --mode production && yarn start:prod"
   },
   "repository": {
     "type": "git",
