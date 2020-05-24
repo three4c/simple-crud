@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 
 const app = express();
 const port = process.env.PORT || 3001;
-const dbUrl = 'mongodb://localhost/crud';
+const dbUrl = process.env.MONGODB_URI || 'mongodb://localhost/crud';
 
 app.use(express.static('client/build'));
 app.use(bodyParser.urlencoded({ extended: true }));
