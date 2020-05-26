@@ -7,7 +7,7 @@ import './AddForm.scss';
 type AddFormProps = FormState & AddFormActions;
 
 const AddForm: React.FC<AddFormProps> = (props) => {
-  const { name, age } = props;
+  const { name, age, error } = props;
 
   return (
     <div className="AddForm">
@@ -19,12 +19,14 @@ const AddForm: React.FC<AddFormProps> = (props) => {
           value={name}
           onChange={(e) => props.changeName(e.target.value)}
         />
+        <p>{error.name}</p>
         <input
           className="AddForm__input"
           placeholder="年齢"
           value={age}
           onChange={(e) => props.changeAge(e.target.value)}
         />
+        <p>{error.age}</p>
         <button className="AddForm__submit" type="submit">
           送信
         </button>

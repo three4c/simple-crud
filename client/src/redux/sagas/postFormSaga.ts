@@ -53,7 +53,12 @@ function* runPostForm(action: {
     );
     yield put(formActions.initializeForm());
   } else {
-    yield put(formActions.postForm.failed({ params: {}, error: error }));
+    yield put(
+      formActions.postForm.failed({
+        params: {},
+        error: error.response.data,
+      }),
+    );
   }
 }
 

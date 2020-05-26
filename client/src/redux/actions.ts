@@ -6,7 +6,7 @@ export const formActions = {
   changeName: actionCreator<string>('CHANGE_NAME'),
   changeAge: actionCreator<string>('CHANGE_AGE'),
   initializeForm: actionCreator<void>('INITIALIZE_FORM'),
-  postForm: actionCreator.async<{}, {}, {}>('POST_FORM'),
+  postForm: actionCreator.async<any, any, any>('POST_FORM'),
 };
 
 export const characterActions = {

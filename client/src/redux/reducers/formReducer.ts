@@ -4,11 +4,19 @@ import { formActions } from '../actions';
 export interface FormState {
   name: string;
   age: string;
+  error: {
+    name: string;
+    age: string;
+  };
 }
 
 const initialState: FormState = {
   name: '',
   age: '',
+  error: {
+    name: '',
+    age: '',
+  },
 };
 
 export const formReducer = reducerWithInitialState(initialState)
@@ -41,8 +49,12 @@ export const formReducer = reducerWithInitialState(initialState)
       ...state,
     };
   })
-  .case(formActions.postForm.failed, (state) => {
+  .case(formActions.postForm.failed, (state, error) => {
     return {
       ...state,
+      error: {
+        name: error.error.name,
+        age: error.error.age,
+      },
     };
   });

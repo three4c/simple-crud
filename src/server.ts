@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 mongoose.connect(
   dbUrl,
-  { useNewUrlParser: true, useUnifiedTopology: true },
+  { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false },
   (dbError) => {
     if (dbError) {
       console.log(dbError);
@@ -35,16 +35,26 @@ mongoose.connect(
     app.post('/api/characters', (request, response) => {
       const { name, age } = request.body;
 
-      if (!name && !age) {
-        return;
-      }
-
       new character({
         name,
         age,
       }).save((error) => {
         if (error) {
-          response.status(500).send();
+          switch (true) {
+            case !name && age:
+              response.status(500).send({
+                name: '名前が入力されていません',
+              });
+            case name && !age:
+              response.status(500).send({
+                name: '年齢が入力されていません',
+              });
+            default:
+              response.status(500).send({
+                name: '名前が入力されていません',
+                age: '年齢が入力されていません',
+              });
+          }
         } else {
           character.find({}, (findError, characterArray) => {
             if (findError) {
