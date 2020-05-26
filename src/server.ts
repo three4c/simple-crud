@@ -40,21 +40,7 @@ mongoose.connect(
         age,
       }).save((error) => {
         if (error) {
-          switch (true) {
-            case !name && age:
-              response.status(500).send({
-                name: '名前が入力されていません',
-              });
-            case name && !age:
-              response.status(500).send({
-                name: '年齢が入力されていません',
-              });
-            default:
-              response.status(500).send({
-                name: '名前が入力されていません',
-                age: '年齢が入力されていません',
-              });
-          }
+          response.send(500).send();
         } else {
           character.find({}, (findError, characterArray) => {
             if (findError) {

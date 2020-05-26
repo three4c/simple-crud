@@ -40,6 +40,7 @@ export const characterReducer = reducerWithInitialState(initialState)
     };
   })
   .case(characterActions.getCharacters.done, (state, payload) => {
+    console.log(payload);
     return {
       ...state,
       isFetching: false,

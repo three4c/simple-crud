@@ -56,7 +56,7 @@ function* runPostForm(action: {
     yield put(
       formActions.postForm.failed({
         params: {},
-        error: error.response.data,
+        error: error,
       }),
     );
   }

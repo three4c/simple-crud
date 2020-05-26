@@ -30,8 +30,6 @@ function* runUpdateCharacters(action: {
     action.payload.age,
   );
 
-  console.log(id, name, age);
-
   if (characterArray && id && name && age) {
     yield put(
       characterActions.updateCharacters.done({
