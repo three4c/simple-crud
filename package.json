@@ -7,12 +7,12 @@
   },
   "main": "dist/server.js",
   "scripts": {
-    "start:dev": "yarn watch:dev & nodemon dist/server.js & yarn watch:react",
+    "start:dev": "yarn watch:dev & yarn watch:react",
     "start:prod": "node dist/server.js",
     "build:dev": "webpack --mode development && yarn build:react",
     "build:prod": "webpack --mode production && yarn build:react",
     "build:react": "cd client && yarn build",
-    "watch:dev": "webpack -w --mode development",
+    "watch:dev": "webpack -w --mode development & nodemon dist/server.js",
     "watch:react": "cd client && yarn start",
     "heroku-postbuild": "webpack --mode production"
   },

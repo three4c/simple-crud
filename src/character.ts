@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
 
-mongoose.Promise = global.Promise;
-
 const characterSchema = new mongoose.Schema({
   name: {
     type: String,
