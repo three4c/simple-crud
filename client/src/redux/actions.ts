@@ -1,7 +1,7 @@
 import actionCreatorFactory from 'typescript-fsa';
 import { CharactersState } from './reducers/charactersReducer';
 
-export const actionCreator = actionCreatorFactory();
+const actionCreator = actionCreatorFactory();
 
 export const formActions = {
   changeName: actionCreator<string>('CHANGE_NAME'),
